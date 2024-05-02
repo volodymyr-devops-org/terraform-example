@@ -19,7 +19,7 @@ provider "github" {
 }
 
 module "gh_repository" {
-  source = "../modules/github_repository"
+  source = "./modules/github_repository"
 
   repo_name        = var.project_repo_name
   repo_description = var.project_repo_description
