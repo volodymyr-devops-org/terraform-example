@@ -20,14 +20,3 @@ variable "project_repo_name" {
   type        = string
   default     = "terraform-example"
 }
-
-variable "team_members" {
-  description = "List of team members"
-  type        = list(string)
-}
-
-variable "team_name" {
-  description = "Team name"
-  type        = string
-  default     = "some-team"
-}

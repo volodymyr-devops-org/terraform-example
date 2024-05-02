@@ -5,6 +5,12 @@ terraform {
       version = "6.2.1"
     }
   }
+  cloud {
+    organization = "volodymyr-devops"
+    workspaces {
+      name = "intro-to-terraform-day-2-lab"
+    }
+  }
 }
 
 provider "github" {
@@ -12,43 +18,11 @@ provider "github" {
   owner = var.gh_organization
 }
 
-resource "github_repository" "this" {
-  name        = var.project_repo_name
-  description = "My awesome codebase"
+module "github_repository" {
+  source = "../modules/github_repository"
 
-  visibility = "public"
-  auto_init  = true
-}
-
-output "gh_repo_homepage_url" {
-  value       = github_repository.this.html_url
-  description = "The name of the project repo"
-}
-
-resource "github_team" "some_team" {
-  name        = var.team_name
-  description = "Some cool team"
-  privacy     = "closed"
-}
-
-output "github_team_name" {
-  value = var.team_name
-}
-
-resource "github_team_members" "some_team_members" {
-  team_id = github_team.some_team.id
-
-  dynamic "members" {
-    for_each = var.team_members
-    content {
-      username = members.value
-      role     = "maintainer"
-    }
-  }
-}
-
-resource "github_team_repository" "some_team_repo" {
-  team_id    = github_team.some_team.id
-  repository = github_repository.this.name
-  permission = "pull"
+  repo_name        = var.project_repo_name
+  repo_description = "My awesome codebase"
+  repo_auto_init   = true
+  repo_visibility  = "public"
 }
