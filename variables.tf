@@ -20,3 +20,9 @@ variable "project_repo_name" {
   type        = string
   default     = "terraform-example"
 }
+
+variable "project_repo_description" {
+  description = "The name of the project repo"
+  type        = string
+  default     = "My awesome codebase"
+}
