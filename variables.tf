@@ -26,3 +26,16 @@ variable "project_repo_description" {
   type        = string
   default     = "My awesome codebase"
 }
+
+variable "team_configuration" {
+  description = "The configuration of the project team"
+  type = object({
+    name        = string
+    description = string
+    privacy     = string
+    members = list(object({
+      username = string
+      role     = string
+    }))
+  })
+}

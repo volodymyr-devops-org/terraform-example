@@ -26,3 +26,9 @@ module "gh_repository" {
   repo_auto_init   = true
   repo_visibility  = "public"
 }
+
+module "gh_team" {
+  source = "./modules/github_team"
+
+  team   = var.team_configuration
+}
