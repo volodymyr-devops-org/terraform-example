@@ -4,6 +4,10 @@ resource "github_team" "some_team" {
   privacy     = var.team.privacy
 }
 
+output "github_team_id" {
+  value = github_team.some_team.id
+}
+
 resource "github_team_members" "some_team_members" {
   team_id = github_team.some_team.id
 

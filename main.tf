@@ -32,3 +32,9 @@ module "gh_team" {
 
   team   = var.team_configuration
 }
+
+resource "github_team_repository" "some_team_repo" {
+  team_id    = module.gh_team.github_team_id
+  repository = var.project_repo_name
+  permission = "pull"
+}
