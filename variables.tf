@@ -22,7 +22,7 @@ variable "project_repo_name" {
 }
 
 variable "project_repo_description" {
-  description = "The name of the project repo"
+  description = "The description of the project repo"
   type        = string
   default     = "My awesome codebase"
 }
@@ -38,4 +38,12 @@ variable "team_configuration" {
       role     = string
     }))
   })
+}
+
+variable "project_repo_branches" {
+  description = "The configuration of the project repo branches"
+  type = list(object({
+    name              = string
+    enable_protection = bool
+  }))
 }

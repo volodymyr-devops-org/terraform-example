@@ -25,12 +25,13 @@ module "gh_repository" {
   repo_description = var.project_repo_description
   repo_auto_init   = true
   repo_visibility  = "public"
+  repo_branches    = var.project_repo_branches
 }
 
 module "gh_team" {
   source = "./modules/github_team"
 
-  team   = var.team_configuration
+  team = var.team_configuration
 }
 
 resource "github_team_repository" "some_team_repo" {

@@ -17,3 +17,11 @@ variable "repo_auto_init" {
   description = "The project repo auto init bool"
   type        = bool
 }
+
+variable "repo_branches" {
+  description = "The configuration of the project repo branches"
+  type = list(object({
+    name              = string
+    enable_protection = bool
+  }))
+}

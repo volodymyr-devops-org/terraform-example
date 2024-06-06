@@ -14,3 +14,9 @@ output "gh_repo_name" {
   value       = github_repository.this.name
   description = "The name of the project repo"
 }
+
+resource "github_branch" "this" {
+  for_each   = { for b in var.repo_branches : b.name => b }
+  repository = github_repository.this.name
+  branch     = each.value.name
+}
