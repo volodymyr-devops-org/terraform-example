@@ -54,6 +54,10 @@ variable "project_repo_branches" {
     {
       name              = "release",
       enable_protection = "true"
+    },
+    {
+      name              = "main",
+      enable_protection = "true"
     }
   ]
 }
