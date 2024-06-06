@@ -46,4 +46,14 @@ variable "project_repo_branches" {
     name              = string
     enable_protection = bool
   }))
+  default = [
+    {
+      name              = "develop",
+      enable_protection = "false"
+    },
+    {
+      name              = "release",
+      enable_protection = "true"
+    }
+  ]
 }
