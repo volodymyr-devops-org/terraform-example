@@ -22,7 +22,6 @@ resource "github_branch" "this" {
 }
 
 resource "github_branch_protection" "main" {
-
   for_each      = { for b in var.repo_branches : b.name => b if b.enable_protection }
   repository_id = github_repository.this.node_id
 
